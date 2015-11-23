@@ -5,7 +5,7 @@ var Example = CUORE.Class(CUORE.Page, {
   },
 
   initializeComponents: function() {
-    this.addComponent(new Involved(),'involved');
+    this.addComponent(new Involved(),'first_example');
   },
 
 });
