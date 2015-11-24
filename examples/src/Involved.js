@@ -7,7 +7,7 @@ Involved = CUORE.Class(CUORE.Component, {
     },
 
     _declareRenderer: function(){
-      this.renderer = Renderers.involved();
+      this.renderer = Renderers.display();
     },
 
     _wireEvents: function() {
@@ -15,16 +15,14 @@ Involved = CUORE.Class(CUORE.Component, {
     },
 
     draw: function(){
-      this.doRender();
-    },
-
-    doRender: function(){
       this.renderer.doRender(this.container, this._prepareData());
     },
 
     _prepareData: function(){
-      return {"name": this.involved,
-              "label": this.getText(this.label)};
+      return {
+                "label": this.getText(this.label),
+                "text": this.involved
+              };
     },
 
     updateInvolved: function(response) {
