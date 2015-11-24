@@ -67,7 +67,7 @@ CUORE.Core = (function(undefined) {
             };
             script.id = callbackName;
             script.type = "text/javascript";
-            script.src = url + callbackName + _serialize(data);
+            script.src = url + '?callback=' + callbackName + _serialize(data);
             document.getElementsByTagName("head")[0].appendChild(script);
 
 

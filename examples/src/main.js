@@ -3,8 +3,8 @@ CUORE.Dom.ready(function() {
   
   document.labels = {};
   document.labels[currentLocale] = {
-      "for.name": "That's a randomly generated name",
-      "for.payload": "Something received from far away" 
+      "for.name": "That's a randomly generated name:",
+      "for.payload": "Are you thinking about...?" 
   };
   
   CUORE.Bus.enableDebug();
