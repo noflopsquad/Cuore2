@@ -14,10 +14,6 @@ Involved = CUORE.Class(CUORE.Component, {
       this.dispatchUsing("updateInvolved","NAMES_generate_EXECUTED");
     },
 
-    draw: function(){
-      this.renderer.doRender(this.container, this._prepareData());
-    },
-
     _prepareData: function(){
       return {
                 "label": this.getText(this.label),

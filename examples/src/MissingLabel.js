@@ -8,10 +8,6 @@ MissingLabel = CUORE.Class(CUORE.Component, {
       this.dispatchUsing("update","JSONP_echo_EXECUTED");
     },
 
-    draw: function(){
-      this.renderer.doRender(this.container, this._prepareData());
-    },
-
     _prepareData: function(){
       return  {
                   "label": this.getText(this.label),

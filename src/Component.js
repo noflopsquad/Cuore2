@@ -22,7 +22,8 @@ CUORE.Component = CUORE.Class(null, {
         this.requestLabelText();
     },
 
-    draw: function() {
+    draw: function(){
+      this.renderer.doRender(this.container, this._prepareData());
     },
 
     updateRender: function() {
