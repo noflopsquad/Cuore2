@@ -1,4 +1,4 @@
-CUORE.Dom.ready(function() {
+var executeWhenReady = function(){
   var currentLocale = (navigator.language || navigator.browserLanguage);
   
   document.labels = {};
@@ -12,4 +12,6 @@ CUORE.Dom.ready(function() {
   document.page = new Example();
 
   document.page.draw();
-});
+};
+
+document.addEventListener('DOMContentLoaded', executeWhenReady);

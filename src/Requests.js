@@ -1,12 +1,6 @@
-CUORE.Core = (function(undefined) {
+CUORE.Requests = (function(undefined) {
 
     var OBJ_PROTO = Object.prototype;
-
-    var bind = function(obj, method) {
-            return function() {
-                return method.apply(obj, [].slice.call(arguments));
-            };
-        };
 
     var request = function(url, data, callback) {
         if (!_createXHR()) return;
@@ -84,14 +78,6 @@ CUORE.Core = (function(undefined) {
             return serialized;
         };
 
-    var isOwnProperty = function(object, property) {
-            return OBJ_PROTO.hasOwnProperty.call(object, property);
-        };
-
-    var toType = function(object) {
-            return OBJ_PROTO.toString.call(object).match(/\s([a-z|A-Z]+)/)[1].toLowerCase();
-        };
-
     var _createXHR = function() {
             return new XMLHttpRequest();
         };
@@ -126,12 +112,9 @@ CUORE.Core = (function(undefined) {
     _indexOfPolyfill();
 
     return {
-        bind: bind,
-        request: request,
-        requestGet: requestGet,
-        requestJSONP: requestJSONP,
-        isOwnProperty: isOwnProperty,
-        toType: toType
+        POST: request,
+        GET: requestGet,
+        JSONP: requestJSONP
     };
 
 })();

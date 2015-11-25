@@ -10,7 +10,7 @@ EchoByJSONP = CUORE.Class(CUORE.Service, {
     },
 
    	_doRequest: function (url, paramsData, callback) {
-        CUORE.Core.requestJSONP(url, paramsData, callback);
+        CUORE.Requests.JSONP(url, paramsData, callback);
     },
 
     wrapResponse: function(callback) {

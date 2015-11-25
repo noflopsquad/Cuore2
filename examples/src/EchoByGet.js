@@ -10,7 +10,7 @@ EchoByGet = CUORE.Class(CUORE.Service, {
     },
 
     _doRequest: function (url, paramsData, callback){
-        CUORE.Core.requestGet(url, paramsData, callback);
+        CUORE.Requests.GET(url, paramsData, callback);
     },
 
 });

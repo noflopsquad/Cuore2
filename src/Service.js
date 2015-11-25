@@ -28,7 +28,7 @@ CUORE.Service = CUORE.Class(null, {
 
     _doRequest: function (url, paramsData, callback)
     {
-        CUORE.Core.request(url, paramsData, callback);
+        CUORE.Requests.POST(url, paramsData, callback);
     },
 
     emit: function (eventName, response) {
@@ -45,11 +45,12 @@ CUORE.Service = CUORE.Class(null, {
     },
 
     _responseCallback: function(eventName) {
-        var emit = this.emit;
+        var self = this;
 
-        var callback= function(response) {
-            this.emit(eventName, response);
+        var callback = function(response) {
+            self.emit(eventName, response);
         }
-        return CUORE.Core.bind(this,callback);;
+
+        return callback;
     }
 });
