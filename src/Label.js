@@ -60,4 +60,8 @@ CUORE.Label = CUORE.Class(CUORE.Service, {
         return theKey;
     },
 
+    getBaseURL: function () {
+        var currentURL = ''; 
+        return currentURL;
+    }
 });

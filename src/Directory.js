@@ -1,10 +1,9 @@
 CUORE.Directory = CUORE.Class(null, {
 
-    init: function(baseURL) {
+    init: function() {
         this.listing = [];
         this.services = {};
 
-        this.setBaseURL(baseURL);
         this._addBuiltinServices();
     },
 
@@ -12,7 +11,6 @@ CUORE.Directory = CUORE.Class(null, {
         var serviceName = aService.getName();
         this.listing.push(serviceName);
 
-        aService.setBaseURL(this.baseURL);
         this.services[serviceName] = aService;
     },
 
@@ -23,16 +21,6 @@ CUORE.Directory = CUORE.Class(null, {
     getService: function(serviceName) {
         var service = this._findService(serviceName);
         return service || new CUORE.Null();
-    },
-
-    setBaseURL: function(baseURL) {
-        this.baseURL = baseURL || '';
-        var serviceNames = this.listing;
-        var numberOfServices = serviceNames.length;
-
-        for (var i = 0; i < numberOfServices; i++) {
-            this._findService(serviceNames[i]).setBaseURL(this.baseURL);
-        }
     },
 
     _findService: function(serviceName) {

@@ -4,7 +4,6 @@ CUORE.Service = CUORE.Class(null, {
         this.name = 'ABSTRACT';
         this.executionPrefix = 'EXECUTED';
         this.SEPARATOR = '_';
-        this.baseURL = '';
     },
 
     execute: function (procedure, params) {
@@ -43,14 +42,6 @@ CUORE.Service = CUORE.Class(null, {
 
     getName: function () {
         return this.name;
-    },
-
-    getBaseURL: function () {
-        return this.baseURL;
-    },
-
-    setBaseURL: function (baseURL) {
-        this.baseURL = baseURL;
     },
 
     _responseCallback: function(eventName) {
