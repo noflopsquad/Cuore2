@@ -29,10 +29,6 @@ CUORE.Page = CUORE.Class(null, {
         });
     },
 
-    getComponentWithDOMId: function(id) {
-        return this.components.filterByName(id);
-    },
-
     addService: function(service) {
         this.services.add(service);
     },
@@ -47,13 +43,5 @@ CUORE.Page = CUORE.Class(null, {
 
     retrieve: function(key) {
         return this.state.retrieve(key);
-    },
-
-    setRegistry: function(registry) {
-        this.components = registry;
-    },
-
-    setDirectory: function(directory) {
-        this.services = directory;
     }
 });
