@@ -7,8 +7,6 @@ CUORE.Bus = (function(undefined) {
     return {
         subscribe: subscribe,
         unsubscribe: unsubscribe,
-        hasSubscriptions: hasSubscriptions,
-        subscribers: subscribers,
         emit: emit,
         enableDebug: enableDebug,
         disableDebug: disableDebug
@@ -37,10 +35,6 @@ CUORE.Bus = (function(undefined) {
         }
     }
 
-    function hasSubscriptions() {
-        return (subscriptions.length > 0);
-    }
-
     function subscribers(theEvent) {
         var selectedSubscribers = [],
             i, subscription,
@@ -56,7 +50,7 @@ CUORE.Bus = (function(undefined) {
     }
 
     function emit(eventName, params) {
-        var subscribersList = this.subscribers(eventName),
+        var subscribersList = subscribers(eventName),
             i, len = subscribersList.length;
 
         debug("Bus.emit (event, params)");
