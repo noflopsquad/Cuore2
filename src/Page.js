@@ -22,11 +22,8 @@ CUORE.Page = CUORE.Class(null, {
     },
 
     draw: function() {
-        var self=this;
-        this.components.each(function(component) {
-            component.onEnvironmentUp(self);
-            component.draw();
-        });
+        this.components.onEnvironmentUp(this);
+        this.components.drawAll();
     },
 
     addService: function(service) {

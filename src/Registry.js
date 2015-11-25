@@ -14,12 +14,12 @@ CUORE.Registry = CUORE.Class(null, {
         return (this.components.indexOf(component) !== -1);
     },
 
-    size: function() {
+    _size: function() {
         return this.components.length;
     },
 
-    each: function(callback) {
-        var componentsLength = this.size();
+    _each: function(callback) {
+        var componentsLength = this._size();
 
         for (var position = 0; position < componentsLength; position++) {
             callback(this.components[position]);
@@ -28,9 +28,21 @@ CUORE.Registry = CUORE.Class(null, {
 
     filterByName: function(name) {
         var selectedComponent = null;
-        this.each(function(component) {
+        this._each(function(component) {
             if(component.getName() === name) selectedComponent = component;
         });
         return selectedComponent;
+    },
+
+    onEnvironmentUp: function(page){
+        this._each(function(component) {
+            component.onEnvironmentUp(page);
+        });
+    },
+
+    drawAll: function(){
+        this.components._each(function(component) {
+            component.draw();
+        });
     }
 });
