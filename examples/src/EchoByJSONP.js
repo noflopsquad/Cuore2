@@ -1,4 +1,4 @@
-EchoByJSONP = CUORE.Class(CUORE.Service, {
+EchoByJSONP = CUORE.Class(CUORE.Services.JSONP, {
     init: function() {
         EchoByJSONP.parent.init.call(this);
         this.name = 'JSONP';
@@ -9,12 +9,7 @@ EchoByJSONP = CUORE.Class(CUORE.Service, {
         this.request(endpoint, payload, eventName);
     },
 
-   	_doRequest: function (url, paramsData, callback) {
-        CUORE.Requests.JSONP(url, paramsData, callback);
-    },
-
-    wrapResponse: function(callback) {
+   	wrapResponse: function(callback) {
         return JSON.parse(callback)[0];
     },
-
 });

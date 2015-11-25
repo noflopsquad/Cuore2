@@ -1,4 +1,4 @@
-EchoByGet = CUORE.Class(CUORE.Service, {
+EchoByGet = CUORE.Class(CUORE.Services.Get, {
     init: function() {
         EchoByGet.parent.init.call(this);
         this.name = 'GET';
@@ -7,10 +7,6 @@ EchoByGet = CUORE.Class(CUORE.Service, {
     echo: function (payload, eventName) {
         endpoint = 'http://urlecho.appspot.com/echo';
         this.request(endpoint, {body: payload}, eventName);
-    },
-
-    _doRequest: function (url, paramsData, callback){
-        CUORE.Requests.GET(url, paramsData, callback);
     },
 
 });

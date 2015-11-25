@@ -28,7 +28,7 @@ CUORE.Service = CUORE.Class(null, {
 
     _doRequest: function (url, paramsData, callback)
     {
-        CUORE.Requests.POST(url, paramsData, callback);
+        return undefined;
     },
 
     emit: function (eventName, response) {
@@ -53,4 +53,22 @@ CUORE.Service = CUORE.Class(null, {
 
         return callback;
     }
+});
+
+CUORE.Services.Get = CUORE.Class(CUORE.Service, {
+    _doRequest: function (url, paramsData, callback){
+        CUORE.Requests.GET(url, paramsData, callback);
+    },
+});
+
+CUORE.Services.JSONP = CUORE.Class(CUORE.Service, {
+    _doRequest: function (url, paramsData, callback) {
+        CUORE.Requests.JSONP(url, paramsData, callback);
+    },
+});
+
+CUORE.Services.POST = CUORE.Class(CUORE.Service, {
+    _doRequest: function (url, paramsData, callback) {
+        CUORE.Requests.POST(url, paramsData, callback);
+    },
 });
