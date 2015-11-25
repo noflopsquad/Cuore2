@@ -1,15 +1,26 @@
 "use strict";
 
 CUORE.Bus = (function(undefined) {
-    var subscriptions = [],
-        debugModeON = false;
+
+    var OFF = {
+        log: function(payload){
+        }
+    };
+
+    var ON = {
+        log: function(payload){
+            console.log(payload);
+        }
+    };
+
+    var subscriptions = [];
+    var debugMode = OFF;
 
     return {
         subscribe: subscribe,
         unsubscribe: unsubscribe,
         emit: emit,
-        enableDebug: enableDebug,
-        disableDebug: disableDebug
+        enableDebug: enableDebug
     };
 
     function subscribe (subscriber, eventName) {
@@ -53,28 +64,26 @@ CUORE.Bus = (function(undefined) {
         var subscribersList = subscribers(eventName),
             i, len = subscribersList.length;
 
-        debug("Bus.emit (event, params)");
-        debug(eventName);
-        debug(params);
-        debug("------------");
+       logEvent(eventName, params);
 
         for (i = 0; i < len; i++) {
             subscribersList[i].eventDispatch(eventName, params);
         }
     }
 
+    function logEvent (name, params) {
+        debug("Bus.emit (event, params)");
+        debug(name);
+        debug(params);
+        debug("------------");
+    }
+
     function debug(object) {
-        if (debugModeON) {
-            console.log(object);
-        }
+        debugMode.log(object);
     }
 
     function enableDebug() {
-        debugModeON = true;
-    }
-
-    function disableDebug() {
-        debugModeON = false;
+        debugMode = ON;
     }
 
     function _subscriptionExists(subscriber, eventName) {
